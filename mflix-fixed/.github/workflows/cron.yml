@@ -31,10 +31,10 @@ jobs:
         run: |
           response=$(curl -s -o /dev/null -w "%{http_code}" \
             -X GET \
-            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
-            -H "x-cron-secret: ${{ secrets.CRON_SECRET }}" \
+            -H "Authorization: Bearer MflixProSecret123" \
+            -H "x-cron-secret: MflixProSecret123" \
             --max-time 90 \
-            "${{ secrets.VERCEL_URL }}/api/cron/process-queue")
+            "https://nwwuio.vercel.app/api/cron/process-queue")
           echo "Response: $response"
           if [ "$response" != "200" ]; then
             echo "Queue processor returned $response"
@@ -54,8 +54,8 @@ jobs:
         run: |
           response=$(curl -s -o /dev/null -w "%{http_code}" \
             -X GET \
-            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
-            -H "x-cron-secret: ${{ secrets.CRON_SECRET }}" \
+            -H "Authorization: Bearer MflixProSecret123" \
+            -H "x-cron-secret: MflixProSecret123" \
             --max-time 90 \
-            "${{ secrets.VERCEL_URL }}/api/system/heal")
+            "https://nwwuio.vercel.app/api/system/heal")
           echo "Heal response: $response"
