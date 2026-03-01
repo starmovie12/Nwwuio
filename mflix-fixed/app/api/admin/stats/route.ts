@@ -127,8 +127,10 @@ export async function GET() {
     // ─── Hourly counts for today (for dashboard mini chart) ─────────────
     const hourlyToday = new Array(24).fill(0);
     // Use recentActivity timestamps or all tasks createdAt for today
-    const todayStart = new Date();
-    todayStart.setHours(0, 0, 0, 0);
+    
+    // ERROR FIXED HERE: Changed 'todayStart' to 'miniChartTodayStart'
+    const miniChartTodayStart = new Date();
+    miniChartTodayStart.setHours(0, 0, 0, 0);
     // Note: recent10 may not cover all today's tasks, but gives a signal
     // For full accuracy, the admin/analytics endpoint has full hourly data
 
