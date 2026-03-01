@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import useSWR from 'swr';
 import { motion, AnimatePresence } from 'motion/react';
@@ -34,7 +34,8 @@ interface Task {
   updatedAt?: string;
 }
 
-export default function LibraryPage() {
+// 1. Asli component ka naam badal kar LibraryContent kar diya
+function LibraryContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { toast } = useToast();
@@ -401,5 +402,14 @@ export default function LibraryPage() {
         )}
       </AnimatePresence>
     </div>
+  );
+}
+
+// 2. Yahan LibraryPage ko Suspense ke andar wrap karke export kiya
+export default function LibraryPage() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center text-slate-400">Loading library...</div>}>
+      <LibraryContent />
+    </Suspense>
   );
 }
