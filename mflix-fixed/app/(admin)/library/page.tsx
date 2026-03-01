@@ -287,7 +287,6 @@ export default function LibraryPage() {
           </Modal>
         )}
       </AnimatePresence>
-    </div>
 
       {/* Edit Task Modal */}
       <AnimatePresence>
